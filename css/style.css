@@ -1,0 +1,19 @@
+.marcas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+}
+
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+}
+#modeloAuto{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size:1.5rem;
+}
+#parrafoTipo{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
