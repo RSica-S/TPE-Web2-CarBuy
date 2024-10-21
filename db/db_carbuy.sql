@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2024 a las 01:55:45
+-- Tiempo de generación: 21-10-2024 a las 05:18:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `autos` (
   `id_auto` int(11) NOT NULL,
   `nombre_auto` varchar(50) NOT NULL,
-  `modelo` int(4) NOT NULL,
-  `tipo` varchar(50) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `precio` varchar(50) NOT NULL,
   `id_marca_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,8 +39,12 @@ CREATE TABLE `autos` (
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`id_auto`, `nombre_auto`, `modelo`, `tipo`, `id_marca_fk`) VALUES
-(1, 'etios', 1980, 'sedan', 1);
+INSERT INTO `autos` (`id_auto`, `nombre_auto`, `descripcion`, `precio`, `id_marca_fk`) VALUES
+(1, 'Corolla', 'Toyota Corolla 1.8 Xei Mt Pack 140cv\r\n2016 | 86.000KM', '$18.500.000', 1),
+(6, 'Hilux', 'Toyota Hilux 3.0 Cd Srv 171cv 4x4 - A3\r\n2015 | 218.000KM', '$29.000.000', 1),
+(7, 'Etios', 'Toyota Etios 1.5 Xls\r\n2014 | 78.000 KM', '$16.500.000', 1),
+(8, 'Frontier', 'Nissan Frontier Xgear 4x4 aut my25\r\n2024 | 0KM', '$46.600.000', 5),
+(9, 'Sentra', 'Nissan Sentra 2.0 Advance Cvt\r\n2022 | 25.000KM', '$38.500.800', 5);
 
 -- --------------------------------------------------------
 
@@ -59,8 +63,9 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marca`, `nombre_marca`, `img_marca`) VALUES
-(1, 'Toyota', ''),
-(2, 'NISSAN', '');
+(1, 'Toyota', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Toyota_logo_%28Red%29.svg/1200px-Toyota_logo_%28Red%29.svg.png'),
+(4, 'Mazda', 'https://upload.wikimedia.org/wikipedia/nah/b/b1/Mazda_logo.png?20080728005359'),
+(5, 'NISSAN', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_2020_logo.svg/1074px-Nissan_2020_logo.svg.png');
 
 -- --------------------------------------------------------
 
@@ -116,13 +121,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
