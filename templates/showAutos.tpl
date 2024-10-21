@@ -3,9 +3,9 @@
 {else}
     {include 'header.tpl'}
 {/if}
-
+</br>
 <div>
-   <h4 class="blockquote">Autos</h4>
+   <h2 class="title"><center>Autos Disponibles<center></h2>
 </div>
 
 <div class="container mt-5">

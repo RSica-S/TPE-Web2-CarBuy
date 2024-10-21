@@ -32,15 +32,15 @@ class AutosModel extends Model
         $auto = $sentencia->fetch(PDO::FETCH_OBJ); // Obtiene la respuesta
         return $auto;
     }
-    public function addAuto($nombre_auto,$modelo_auto,$tipo_auto,$id_marca){
+    public function addAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca){
 
-        $sentencia = $this->db->prepare("INSERT INTO autos(nombre_auto, modelo, tipo, id_marca_fk) VALUES(?,?,?,?)"); // Prepara         
-        return $sentencia->execute([$nombre_auto,$modelo_auto,$tipo_auto,$id_marca]); // Ejecuta
+        $sentencia = $this->db->prepare("INSERT INTO autos(nombre_auto, descripcion, precio, id_marca_fk) VALUES(?,?,?,?)"); // Prepara         
+        return $sentencia->execute([$nombre_auto,$descripcion_auto,$precio_auto,$id_marca]); // Ejecuta
     }
-    public function editAuto($nombre_auto,$modelo_auto,$tipo_auto,$id_marca,$id_auto){
+    public function editAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca,$id_auto){
 
-        $sentencia = $this->db->prepare("UPDATE autos SET nombre_auto =?, modelo=?, tipo=?, id_marca_fk=? WHERE id_auto = ?"); // Prepara        
-        return $sentencia->execute([$nombre_auto,$modelo_auto,$tipo_auto,$id_marca, $id_auto]); // Ejecuta
+        $sentencia = $this->db->prepare("UPDATE autos SET nombre_auto =?, descripcion=?, precio=?, id_marca_fk=? WHERE id_auto = ?"); // Prepara        
+        return $sentencia->execute([$nombre_auto,$descripcion_auto,$precio_auto,$id_marca, $id_auto]); // Ejecuta
     }
     public function delete($id_auto)
     {

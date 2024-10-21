@@ -1,7 +1,8 @@
 {include 'templates/headerAdmin.tpl'}
 <div class="container">
     <form action="guardarAuto" method="post">
-
+        </br>
+        <h4>Agregue un auto nuevo</h4>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nombreAuto">Nombre del auto</label>
@@ -16,16 +17,16 @@
                 </select>
             </div>
             <div class="form-group col-md-2">
-                <label for="tipo">Tipo</label>
-                <input type="text" class="form-control" id="tipo" name="tipo">
+                <label for="precio">Precio</label>
+                <input type="text" class="form-control" id="precio" name="precio">
             </div>
         </div>
         <div class="form-group">
-            <label for="modeloAuto">Modelo del Auto</label>
-            <textarea class="form-control" id="modeloAuto" rows="3" name="modeloAuto"></textarea>
+            <label for="descripcionAuto">Descripcion del Auto</label>
+            <textarea class="form-control" id="descripcionAuto" rows="3" name="descripcionAuto"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar Auto</button>
+        <button type="submit" class="btn btn-dark">Agregar Auto</button>
     </form>
 </div>
 {include 'templates/footer.tpl'}

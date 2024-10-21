@@ -16,12 +16,14 @@
 -Además, se cuenta con una tabla de usuarios.
 
 ##Usuario administrador:
-    -*Usuario:* webadmin
-    -*Contraseña:* admin
+
+-*Usuario:* webadmin
+-*Contraseña:* admin
 
 ##Despliegue
 -Para el despliegue del sitio web desde el repositorio se deben realizar los siguientes pasos:
-    1.Clonar el repositorio en su ordenador. La clonación puede hacerse descomprimiendo el archivo ZIP o clonando mediante aplicaciones como GIT.
-    2.Se debe configurar la base de datos. La base de datos deberá llevar el nombre *db_carbuy*.
-    3.Se debe abrir el navegador web a utilizar y colocar en la barra la dirección del proyecto
+
+1.Clonar el repositorio en su ordenador. La clonación puede hacerse descomprimiendo el archivo ZIP o clonando mediante aplicaciones como GIT.
+2.Se debe configurar la base de datos. La base de datos deberá llevar el nombre *db_carbuy*.
+3.Se debe abrir el navegador web a utilizar y colocar en la barra la dirección del proyecto
 

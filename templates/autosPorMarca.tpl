@@ -4,8 +4,9 @@
     {include 'header.tpl'}
 {/if}
 
+</br>
 <div>
-   <h4 class="blockquote">Autos</h4>
+   <h2 class="title"><center>Autos disponibles de la Marca</center></h2>
 </div>
     <div class="container mt-5">
         <div class="marcas">

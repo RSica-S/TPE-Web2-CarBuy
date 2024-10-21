@@ -89,12 +89,12 @@ class AdminController{
     public function addAuto(){
         $nombre_auto = $_POST["nombreAuto"];
         $id_marca = $_POST["idMarca"];
-        $modelo_auto = $_POST["modeloAuto"];
-        $tipo_auto = $_POST["tipo"];
+        $descripcion_auto = $_POST["descripcionAuto"];
+        $precio_auto = $_POST["precio"];
 
-        if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($modelo_auto)&&!empty($tipo_auto)){
+        if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($descripcion_auto)&&!empty($precio_auto)){
             
-           $agregada = $this->modelAutos->addAuto($nombre_auto,$modelo_auto,$tipo_auto,$id_marca);
+           $agregada = $this->modelAutos->addAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca);
             if($agregada){
 
                 header('Location: ' . BASE_URL . 'listaAutos');
@@ -120,12 +120,12 @@ class AdminController{
 
         $nombre_auto = $_POST["nombreAuto"];
         $id_marca = $_POST["idMarca"];
-        $modelo_auto = $_POST["modeloAuto"];
-        $tipo_auto = $_POST["tipo"];
+        $descripcion_auto = $_POST["descripcionAuto"];
+        $precio_auto = $_POST["precio"];
         $id_auto=$_POST["id_auto"];
-        if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($modelo_auto)&&!empty($tipo_auto)&&!empty($id_auto)){
+        if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($descripcion_auto)&&!empty($precio_auto)&&!empty($id_auto)){
             
-           $editada = $this->modelAutos->editAuto($nombre_auto,$modelo_auto,$tipo_auto,$id_marca,$id_auto);
+           $editada = $this->modelAutos->editAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca,$id_auto);
             if($editada){
 
                 header('Location: ' . BASE_URL . 'listaAutos');
