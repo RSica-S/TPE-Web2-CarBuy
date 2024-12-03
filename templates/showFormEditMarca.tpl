@@ -4,9 +4,11 @@
         <form action="guardarEditMarca" method="POST" class="my-4">
             <h4>Modifique los datos de la marca</h4>
             <div class="form-group">
+                <input name="id" type="text" value="{$marca->id_marca}" class="form-control" hidden>
                 <label>Nombre de la marca</label>
                 <input name="nombre" type="text" value={$marca->nombre_marca} class="form-control">
-                <input name="id" type="text" value={$marca->id_marca} class="form-control" hidden>
+                <label>ingrese URL del logo</label>
+                <input name="logo" type="text" value="{$marca->img_marca}" class="form-control">
             </div>
             <button type="submit" class="btn btn-dark">Guardar</button>
             <a class="btn btn-dark" href="listaMarcas"><b>Volver</b></a>

@@ -46,10 +46,8 @@ class LoginController
         header('Location:' . BASE_URL . 'listaMarcas');
     }
 
-
-    //verifica que tipo de usuario es
-    public function formCheckIn()
+    public function showError($msg)
     {
-        $this->viewPublic->formCheck();
+        $this->viewAdmin->showError($msg);
     }
 }

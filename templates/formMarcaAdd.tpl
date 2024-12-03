@@ -6,6 +6,8 @@
                 <div class="form-group">
                     <label>Ingrese el nombre</label>
                     <input name="nombre" type="text" class="form-control">
+                    <label>Ingrese URL del logo</label>
+                    <input name="logo" type="text" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-dark">Agregar</button>
                 <a class="btn btn-dark" href="listaMarcas">volver</a>

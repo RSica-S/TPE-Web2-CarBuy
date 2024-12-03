@@ -17,12 +17,15 @@ class AdminController{
 
     public function __construct()
     {
-        authHelper::checkLogged();
+        $logged=authHelper::checkLogged();
         $this->modelMarcas = new MarcasModel();
         $this->modelAutos = new AutosModel();
         $this->modelLogin = new LoginModel();
         $this->viewAdmin = new AdminView();
         $this->viewPublic = new PublicView();
+        if(!$logged){
+            header('Location: '. BASE_URL .'showLogIn');
+        }
     }
 
     // Muestra Fomrulario de carga de Marca
@@ -32,14 +35,17 @@ class AdminController{
 
     // Guarda la nueva Marca
     public function addMarca(){
-        if(empty($_POST['nombre'])){
+
+        $nombre = $_POST['nombre'];
+        $logo = $_POST['logo'];
+        if(empty($nombre) || empty($logo)){
             $this->viewAdmin->showError("No se completaron todos los datos");
         } else{
-            $marca = $this->modelMarcas->getName($_POST['nombre']);
+            $marca = $this->modelMarcas->getName($nombre);
             if(!empty($marca)){
                 $this->viewAdmin->showError("La marca ya existe");
             } else{
-                $this->modelMarcas->insert($_POST['nombre']);
+                $this->modelMarcas->insert($nombre, $logo);
                 header('Location: ' . BASE_URL . 'listaMarcas');
             }
         }
@@ -55,22 +61,34 @@ class AdminController{
     // Modifica Marca
     public function modifyMarca()
     {
-        if (empty($_POST['nombre'])) {
-            $marca = $this->modelMarcas->getName($_POST['nombre']);
-            $this->viewAdmin->showFormEditMarca($marca, "completar todos los campos");
+        $nombre = $_POST['nombre'];
+        $logo = $_POST['logo'];
+        $id = $_POST['id'];
+        if (empty($nombre) || empty($logo) || empty($id) ) {
+            $this->showError("Debe completar todos los campos");
         }
         else{
-            $this->modelMarcas->update($_POST['nombre'], $_POST['id']);
-            $marca = $this->modelMarcas->getName($_POST['nombre']);
-            $this->viewAdmin->showFormEditMarca($marca, "los cambios se guardaron correctamente");
+            $editada = $this->modelMarcas->update($nombre, $logo, $id); 
+            if (!$editada){
+                $this->showError("No se pudo editar la marca, intente nuevamente");
+            }
+            else{
+                header('Location: ' . BASE_URL . 'listaMarcas');
+            }
         }
     }
 
     // Elimina una Marca
     public function deleteMarca($id_Marca)
-    {
-        $this->modelMarcas->delete($id_Marca);
-        header('Location: ' . BASE_URL . 'listaMarcas');
+    {   
+        $tieneAutos = $this->modelAutos->getAutosByMarcas($id_Marca);
+        if ($tieneAutos) {
+            $this->showError("No se pudo eliminar la marca porque existen autos asociados");
+        }
+        else{
+            $this->modelMarcas->delete($id_Marca);
+            header('Location: ' . BASE_URL . 'listaMarcas');
+        }
     }
     
     // Error
@@ -94,8 +112,8 @@ class AdminController{
 
         if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($descripcion_auto)&&!empty($precio_auto)){
             
-           $agregada = $this->modelAutos->addAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca);
-            if($agregada){
+           $agregado = $this->modelAutos->addAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca);
+            if($agregado){
 
                 header('Location: ' . BASE_URL . 'listaAutos');
             }else{
@@ -125,8 +143,8 @@ class AdminController{
         $id_auto=$_POST["id_auto"];
         if(!empty($nombre_auto)&&!empty($id_marca)&&!empty($descripcion_auto)&&!empty($precio_auto)&&!empty($id_auto)){
             
-           $editada = $this->modelAutos->editAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca,$id_auto);
-            if($editada){
+           $editado = $this->modelAutos->editAuto($nombre_auto,$descripcion_auto,$precio_auto,$id_marca,$id_auto);
+            if($editado){
 
                 header('Location: ' . BASE_URL . 'listaAutos');
             }else{
@@ -142,8 +160,8 @@ class AdminController{
 
     // Elimina el Auto
     public function deleteAuto($id_auto){
-        $eliminada = $this->modelAutos->delete($id_auto);
-        if($eliminada){
+        $eliminado = $this->modelAutos->delete($id_auto);
+        if($eliminado){
 
             header('Location: ' . BASE_URL . 'listaAutos');
         }else{

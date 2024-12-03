@@ -13,12 +13,12 @@
             {foreach $autosPorMarca item= autos}
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title"> {strtoupper($autos->nombre_auto)} </p>
+                        <a href="mostrarAuto/{$autos->id_auto}" class="card-title"> {strtoupper($autos->nombre_auto)} </a>
                     </div>
                 </div>
             {/foreach}
         </div>
-        <a class="btn btn-dark" href="listaMarcas">volver</a>
+        <a class="btn btn-dark" href="listaMarcas">Volver</a>
     </div>
 
 {include 'footer.tpl'}

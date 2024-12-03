@@ -35,11 +35,7 @@ class PublicController{
         }
     }
 
-    public function showError($msg){
-        $this->viewPublic->showError($msg);
-    }
-
-    // Muestra los Autos
+        // Muestra los Autos
     public function showAutos(){
 
         $autos = $this->modelAutos->getAll();
@@ -48,5 +44,9 @@ class PublicController{
     public function showAuto($id){
         $auto = $this->modelAutos->auto($id);
         $this->viewPublic->showAuto($auto);
+    }
+
+    public function showError($msg){
+        $this->viewPublic->showError($msg);
     }
 }

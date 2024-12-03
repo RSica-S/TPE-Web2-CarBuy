@@ -13,5 +13,17 @@ class Model
             MYSQL_USER,
             MYSQL_PASS
         );
+
+        $this->_deploy();
+    }
+
+    private function _deploy()
+    {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if (count($tables) == 0) {
+            $sql = file_get_contents('db/db_carbuy.sql');
+            $this->db->query($sql);
+        }
     }
 }

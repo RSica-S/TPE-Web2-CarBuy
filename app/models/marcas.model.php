@@ -32,16 +32,16 @@ class MarcasModel extends Model
         return $marca;
     }
 
-    public function insert($nombre)
+    public function insert($nombre, $logo)
     {
-        $sentencia = $this->db->prepare("INSERT INTO marcas(nombre_marca) VALUES(?)"); // Prepara        
-        return $sentencia->execute([$nombre]); // Ejecuta
+        $sentencia = $this->db->prepare("INSERT INTO marcas(nombre_marca, img_marca) VALUES(?,?)"); // Prepara        
+        return $sentencia->execute([$nombre, $logo]); // Ejecuta
     }
 
-    public function update($nombre, $id)
+    public function update($nombre, $logo, $id)
     {
-        $sentencia = $this->db->prepare("UPDATE marcas SET nombre_marca=? WHERE id_marca=?"); // Prepara
-        return $sentencia->execute([$nombre, $id]); // Ejecuta
+        $sentencia = $this->db->prepare("UPDATE marcas SET nombre_marca=?, img_marca=? WHERE id_marca=?"); // Prepara
+        return $sentencia->execute([$nombre, $logo, $id]); // Ejecuta
     }
 
     public function delete($id_marca)
